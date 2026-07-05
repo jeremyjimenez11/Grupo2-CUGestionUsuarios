@@ -4,17 +4,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Crear Usuario</title>
+    <title>Actualizar Usuario</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/estilos.css">
 </head>
 <body>
-    <h1>Crear Usuario</h1>
+    <h1>Actualizar Usuario</h1>
 
     <c:if test="${not empty mensajeError}">
         <p style="color:red;">${mensajeError}</p>
     </c:if>
 
     <form action="${pageContext.request.contextPath}/UsuarioController" method="post">
-        <input type="hidden" name="accion" value="crear"/>
+        <input type="hidden" name="accion" value="actualizar"/>
+        <input type="hidden" name="id" value="${usuario.id}"/>
 
         <p>
             <label>Nombre:</label>
@@ -26,7 +28,7 @@
         </p>
         <p>
             <label>Clave:</label>
-            <input type="password" name="clave"/>
+            <input type="password" name="clave" value="${usuario.clave}"/>
         </p>
         <p>
             <label>Rol:</label>
@@ -34,10 +36,10 @@
                 <option value="admin" ${usuario.rol == 'admin' ? 'selected' : ''}>Admin</option>
                 <option value="empleado" ${usuario.rol == 'empleado' ? 'selected' : ''}>Empleado</option>
          	</select>
-         	<br>
+
         </p>
 
-        <button type="submit">Guardar</button>
+        <button type="submit">Actualizar</button>
         <a href="${pageContext.request.contextPath}/UsuarioController?accion=listar">Cancelar</a>
     </form>
 </body>
