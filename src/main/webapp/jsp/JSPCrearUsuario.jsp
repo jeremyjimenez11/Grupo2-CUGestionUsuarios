@@ -32,7 +32,7 @@
             <label>Rol:</label>
             <select name="rol">
                 <option value="admin" ${usuario.rol == 'admin' ? 'selected' : ''}>Admin</option>
-                <option value="user" ${usuario.rol == 'empleado' ? 'selected' : ''}>Empleado</option>
+                <option value="empleado" ${usuario.rol == 'empleado' ? 'selected' : ''}>Empleado</option>
          	</select>
          	<br>
         </p>
