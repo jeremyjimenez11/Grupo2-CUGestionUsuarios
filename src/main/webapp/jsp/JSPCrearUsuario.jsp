@@ -38,7 +38,7 @@
         </p>
 
         <button type="submit">Guardar</button>
-        <a href="${pageContext.request.contextPath}/UsuarioController?accion=listar">Cancelar</a>
+        <a href="${pageContext.request.contextPath}/UsuarioController?accion=ingresar">Cancelar</a>
     </form>
 </body>
 </html>

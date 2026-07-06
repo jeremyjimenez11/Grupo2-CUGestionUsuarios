@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Actualizar Usuario</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/estilos.css">
 </head>
 <body>
     <h1>Actualizar Usuario</h1>
@@ -40,7 +39,7 @@
         </p>
 
         <button type="submit">Actualizar</button>
-        <a href="${pageContext.request.contextPath}/UsuarioController?accion=listar">Cancelar</a>
+        <a href="${pageContext.request.contextPath}/UsuarioController?accion=ingresar">Cancelar</a>
     </form>
 </body>
 </html>

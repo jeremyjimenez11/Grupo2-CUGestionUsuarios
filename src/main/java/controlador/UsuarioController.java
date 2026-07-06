@@ -13,7 +13,6 @@ import java.util.List;
 @WebServlet("/UsuarioController")
 public class UsuarioController extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
 
     private final UsuarioService usuarioService = new UsuarioService();
 
@@ -34,7 +33,7 @@ public class UsuarioController extends HttpServlet {
 
         String accion = request.getParameter("accion");
         if (accion == null) {
-            accion = "listar";
+            accion = "ingresar";
         }
 
         switch (accion) {
@@ -44,13 +43,13 @@ public class UsuarioController extends HttpServlet {
             case "actualizar":      actualizar(request, response);                  break;
             case "delete":  		mostrarConfirmacion(request, response);         break;
             case "eliminar":        eliminar(request, response);                    break;
-            case "listar":
-            default:                listar(request, response);                      break;
+            case "ingresar":
+            default:                ingresar(request, response);                      break;
         }
     }
 
-    // Solicita abrir el modulo -> listarUsuarios() -> JSPGestionUsuarios
-    private void listar(HttpServletRequest request, HttpServletResponse response)
+    // Solicita abrir el modulo -> ingresar() -> JSPGestionUsuarios
+    private void ingresar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<Usuario> listaUsuarios = usuarioService.listarUsuarios();
         request.setAttribute("listaUsuarios", listaUsuarios);
@@ -75,7 +74,7 @@ public class UsuarioController extends HttpServlet {
             request.setAttribute("usuario", usuario);
             request.getRequestDispatcher("/jsp/JSPCrearUsuario.jsp").forward(request, response);
         } else {
-            listar(request, response);
+            ingresar(request, response);
         }
     }
 
@@ -101,7 +100,7 @@ public class UsuarioController extends HttpServlet {
             request.setAttribute("usuario", usuario);
             request.getRequestDispatcher("/jsp/JSPActualizarUsuario.jsp").forward(request, response);
         } else {
-            listar(request, response);
+            ingresar(request, response);
         }
     }
 
@@ -122,7 +121,7 @@ public class UsuarioController extends HttpServlet {
         usuarioService.eliminarUsuario(idUsuario, respuesta);
 
         // Tanto si confirma como si cancela, se regresa a la lista actualizada
-        listar(request, response);
+        ingresar(request, response);
     }
 
     private Usuario leerUsuarioDesdeRequest(HttpServletRequest request, boolean conId) {
